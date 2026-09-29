@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<d2:payload xmlns:d2="http://datex2.eu/schema/3/d2Payload" xmlns:com="http://datex2.eu/schema/3/common" xmlns:prk="http://datex2.eu/schema/3/parking" xmlns:fac="http://datex2.eu/schema/3/facilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="prk:ParkingStatusPublication" lang="cs" modelBaseVersion="3" profileName="cz-ndic_d2-city-parking-status" profileVersion="1.0">
+  <!-- tag::header[] -->
+  <com:feedType>x-source:cz-ndic_d2-city-parking-status-v1</com:feedType>
+  <com:publicationTime>2016-05-18T18:49:21+02:00</com:publicationTime>
+  <com:publicationCreator>
+    <com:country>cz</com:country>
+    <com:nationalIdentifier>DRU</com:nationalIdentifier>
+  </com:publicationCreator>
+  <!-- end::header[] -->
+  <!-- tag::table-ref[] -->
+  <prk:parkingTableReference id="CzechParkAndRideTable" version="1" targetClass="prk:ParkingTable"/>
+  <!-- end::table-ref[] -->
+  <prk:headerInformation>
+    <com:confidentiality>noRestriction</com:confidentiality>
+    <com:informationStatus>real</com:informationStatus>
+  </prk:headerInformation>
+  <!-- tag::place-status[] -->
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="PR-2" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2016-05-18T18:48:51+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>50</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <!-- end::place-status[] -->
+</d2:payload>

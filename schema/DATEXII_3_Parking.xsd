@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:prk="http://datex2.eu/schema/3/parking" version="1" targetNamespace="http://datex2.eu/schema/3/parking" xmlns:com="http://datex2.eu/schema/3/common" xmlns:fac="http://datex2.eu/schema/3/facilities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://datex2.eu/schema/3/facilities" schemaLocation="DATEXII_3_Facilities.xsd" />
+  <xs:import namespace="http://datex2.eu/schema/3/common" schemaLocation="DATEXII_3_Common.xsd" />
+  <xs:complexType name="_ParkingFaultEnum">
+    <xs:simpleContent>
+      <xs:extension base="prk:ParkingFaultEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_ParkingOccupancyTrendEnum">
+    <xs:simpleContent>
+      <xs:extension base="prk:ParkingOccupancyTrendEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_ParkingPlaceStatusEnum">
+    <xs:simpleContent>
+      <xs:extension base="prk:ParkingPlaceStatusEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_ParkingTableVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="com:VersionedReference">
+        <xs:attribute name="targetClass" type="xs:string" use="required" fixed="prk:ParkingTable" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Occupancy">
+    <xs:annotation>
+      <xs:documentation>Information on the used and remaining parking capacity.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numberOfVacantSpaces" type="com:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The total number of currently vacant parking spaces available in the specified parking site, group of parking sites or group of parking spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfVehicles" type="com:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Number of vehicles (of specified type) on the specified area. Parking too narrow or too wide may affect differences to the 'occupiedSpaces' value. Should not include petrol station traffic.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="occupancy" type="com:Percentage" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The percentage value of parking spaces occupied in the specified parking site, group of parking sites or assigned parking.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="occupancyTrend" type="prk:_ParkingOccupancyTrendEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The trend of the occupancy of the parking spaces in the specified parking site, group of parking sites or assigned parking.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_occupancyExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ParkingFaultEnum">
+    <xs:annotation>
+      <xs:documentation>Types of parking site or access faults.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="communicationsFailure">
+        <xs:annotation>
+          <xs:documentation>Communications failure affecting parking site.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="barrierMalfunction">
+        <xs:annotation>
+          <xs:documentation>The entrance or exit barrier(s) are malfunctioning causing access problems to vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="entranceExitObstructed">
+        <xs:annotation>
+          <xs:documentation>One or more entrances or exits are obstructed to some degree causing access problems to vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="erroneousOccupancyInformation">
+        <xs:annotation>
+          <xs:documentation>Occupancy information is subject to errors due to malfunctioning equipment.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="erroneousOccupancyDisplayed">
+        <xs:annotation>
+          <xs:documentation>Occupancy information displayed on signs associated with parking site (e.g. at entrance) are erroneous.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="paymentMachinesInoperative">
+        <xs:annotation>
+          <xs:documentation>Payment machines are not functioning normally.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="reservationServiceOutOfOrder">
+        <xs:annotation>
+          <xs:documentation>Reservation service out of order.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noParkingInformationAvailable">
+        <xs:annotation>
+          <xs:documentation>No parking information available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unspecified">
+        <xs:annotation>
+          <xs:documentation>General fault of unspecified type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown parking facility fault.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ParkingOccupancyTrendEnum">
+    <xs:annotation>
+      <xs:documentation>List of terms used to describe the trend in parking space occupancy.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="decreasing">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is decreasing.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="increasing">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is increasing.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="stable">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is stable.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="increasingQuickly">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is increasing quickly.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="increasingSlowly">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is increasing slowly.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="decreasingQuickly">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is decreasing quickly.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="decreasingSlowly">
+        <xs:annotation>
+          <xs:documentation>Parking space occupancy is decreasing slowly.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ParkingPlaceStatusEnum">
+    <xs:annotation>
+      <xs:documentation>The status of the parking place or sub-places (spaces available or not).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="full">
+        <xs:annotation>
+          <xs:documentation>The parking site is full (as defined by its configuration parameters).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fullAtEntrance">
+        <xs:annotation>
+          <xs:documentation>The parking site is considered full at its entrance (e.g. full sign is displayed at entrance or on managing VMS).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="spacesAvailable">
+        <xs:annotation>
+          <xs:documentation>Parking spaces are currently available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="almostFull">
+        <xs:annotation>
+          <xs:documentation>The parking site is almost full (as defined by its configuration parameters).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overcrowding">
+        <xs:annotation>
+          <xs:documentation>The parking site is overcrowding (as defined by its configuration parameters).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overcrowdingLevel1">
+        <xs:annotation>
+          <xs:documentation>The parking site is overcrowding in level 1 (as defined by its configuration parameters).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overcrowdingLevel2">
+        <xs:annotation>
+          <xs:documentation>The parking site is overcrowding in level 2 (as defined by its configuration parameters).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noOvercrowding">
+        <xs:annotation>
+          <xs:documentation>The parking site is not overcrowded.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>The status of the parking site is unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParkingStatusInformation">
+    <xs:annotation>
+      <xs:documentation>General status information for parking related objects. Can also be historical or forecasted data. In this case, 'StatusValidity' must be specified.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="fac:FacilityStatus">
+        <xs:sequence>
+          <xs:element name="parkingFault" type="prk:_ParkingFaultEnum" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>A fault indicator for the parking site.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="occupancy" type="prk:Occupancy" minOccurs="0" />
+          <xs:element name="_parkingStatusInformationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParkingStatusPublication">
+    <xs:annotation>
+      <xs:documentation>A publication containing the current status of one or more objects of the place hierarchy defined in the ParkingStatusPublication.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="com:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="parkingTableReference" type="prk:_ParkingTableVersionedReference" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>It is possible to limit the publication to one or more ParkingTable and to set a reference to these tables here.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="headerInformation" type="com:HeaderInformation" minOccurs="0" />
+          <xs:element name="parkingStatusInformation" type="prk:ParkingStatusInformation" maxOccurs="unbounded" />
+          <xs:element name="_parkingStatusPublicationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PlaceStatus">
+    <xs:annotation>
+      <xs:documentation>Dynamic status information for the static object 'Place' or 'SubplaceElement'.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="prk:ParkingStatusInformation">
+        <xs:sequence>
+          <xs:element name="status" type="prk:_ParkingPlaceStatusEnum" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The status of the parking place or sub-places (spaces available or not) including overcrowding information.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_placeStatusExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

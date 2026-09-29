@@ -1,0 +1,13 @@
+# Metadata dokumentace. Verze dokumentace = <format_version>.<revision>
+format_version: '1.0'
+revision: 0
+date: '2026-09-28'
+languages:
+- cs
+- en
+cs:
+  perex: 'Dynamický stav P+R a městských parkovišť: obsazenost, stav, otevřenost.'
+  keywords: DATEX II, NDIC, ParkingStatusPublication
+en:
+  perex: 'Dynamic status of P+R and city car parks: occupancy, status, opening.'
+  keywords: DATEX II, NDIC, ParkingStatusPublication
