@@ -23,12 +23,6 @@ samples: samples
 ndic:
   action: create
   previous: CarParks v cz-ndic_d2-parking-occupancy-v1.0 (DATEX II 2.3)
-  source: správci parkovišť (P+R Praha a další města)
-  distributions:
-  - x-source:cz-ndic_d2-city-parking-status-v1 (push, delta)
-  legislation:
-  - RTTI
-  - MMTIS
   profiles: []
   profileName: cz-ndic_d2-city-parking-status
   profileVersion: '1.0'
