@@ -5,7 +5,7 @@ schématu DATEX II 3.7 a odpovídají výběru profilu (`.sel`).
 
 === pr-status.xml – obsazenost parkoviště P+R
 
-Publikace obsahuje stav jednoho parkoviště P+R (`PR-2`, P+R Černý Most) převedený ze vzorku verze 2.
+Publikace obsahuje stav jednoho parkoviště P+R (`PR-2`, P+R Černý Most).
 
 [source,xml]
 ----
