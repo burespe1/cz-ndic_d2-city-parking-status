@@ -8,6 +8,6 @@
   cz-ndic_d2-parking-occupancy-v1.0, DATEX II 2.3).
 * Změny oproti předchozímu formátu:
 ** Formát je převeden na model DATEX II 3.7. Obálky `d2LogicalModel` a `exchange`
-   se nepoužívají; kořen je `d2:payload`, formát určují atributy `profileName` a `profileVersion`.
+   se nepoužívají; kořen je `d2:payload`, formát určují atributy `@profileName` a `@profileVersion`.
 ** Identifikátory parkovišť (např. `PR-2`) se nemění.
 * Vzorek `pr-status.xml` je převeden ze vzorku předchozího formátu.

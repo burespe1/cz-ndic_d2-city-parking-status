@@ -5,34 +5,36 @@ poloha, kapacita, provozovatel) obsahuje samostatný statický formát `cz-ndic_
 tento formát nese jen proměnné údaje a na tabulku parkovišť odkazuje.
 
 Formát vychází z DATEX II publikace
-`ParkingStatusPublication` <<TS16157-6>> a je *lehkou podmnožinou* profilu pro parkoviště nákladních
-vozidel (ITP): používá jen nejnižší úroveň hierarchie parkoviště – jedno parkoviště (`Place`) jako celek.
+`prk:ParkingStatusPublication` <<TS16157-6>> a je *lehkou podmnožinou* profilu pro parkoviště nákladních
+vozidel (ITP): používá jen nejnižší úroveň hierarchie parkoviště – jedno parkoviště (`prk:Place`) jako celek.
 
 [[obalka]]
 === Obálka a hlavička publikace
 
 Každá zpráva je dokument DATEX II 3 s kořenovým elementem `d2:payload`. Atribut `xsi:type` kořenového elementu určuje typ
-publikace (zde `prk:ParkingStatusPublication`), atribut `modelBaseVersion="3"` verzi modelu a atribut `lang` výchozí jazyk
+publikace (zde `prk:ParkingStatusPublication`), atribut `modelBaseVersion="3"` verzi modelu a atribut `@lang` výchozí jazyk
 textů.
 
 Formát, podle kterého je zpráva sestavena, identifikují výhradně atributy kořenového elementu:
 
 [horizontal]
-`profileName`:: identifikátor formátu bez verze (`cz-ndic_d2-city-parking-status`),
-`profileVersion`:: verze formátu (`1.0`).
+`@profileName`:: identifikátor formátu bez verze (`cz-ndic_d2-city-parking-status`),
+`@profileVersion`:: verze formátu (`1.0`).
 
 Hlavička publikace obsahuje:
 
-* `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>.
-  Zdroj odkazuje na formát, ve kterém data poskytuje; formát zprávy určují atributy `profileName`
-  a `profileVersion`. Element `feedDescription` se nepoužívá.
-* `publicationTime` – čas vytvoření obsahu publikace. Pokud se obsah od předchozí publikace nezměnil,
-  zůstává čas původní; nový čas vzniká jen se
-  změnou obsahu.
-* `publicationCreator` – poskytovatel publikace: kód země malými písmeny (`cz`) a zkratka
-  poskytovatele (`nationalIdentifier`).
-* `headerInformation` – způsob nakládání s informacemi; NDIC uvádí vždy `confidentiality`
-  = `noRestriction` a `informationStatus` = `real`.
+* `feedType` – identifikátor zdroje dat (distribuce) v registru národního přístupového bodu <<nap>>:
+** zdroj odkazuje na formát, ve kterém data poskytuje; formát zprávy určují atributy `@profileName` a
+   `@profileVersion`,
+** element `feedDescription` se nepoužívá.
+* `publicationTime` – čas vytvoření obsahu publikace; pokud se obsah od předchozí publikace nezměnil, zůstává
+  čas původní; nový čas vzniká jen se změnou obsahu.
+* `publicationCreator` – poskytovatel publikace:
+** kód země malými písmeny (`cz`),
+** zkratka poskytovatele (`nationalIdentifier`).
+* `headerInformation` – způsob nakládání s informacemi; NDIC uvádí vždy:
+** `confidentiality` = `noRestriction`,
+** `informationStatus` = `real`.
 
 Všechny časové údaje ve zprávě se uvádějí včetně časové zóny.
 
@@ -48,7 +50,7 @@ include::{samplesdir}/pr-status.xml[tag=header,indent=2]
 === Odkaz na tabulku parkovišť
 
 Publikace odkazuje elementem `parkingTableReference` na tabulku parkovišť ve statickém formátu
-(`targetClass` = `prk:ParkingTable`, identifikátor a verze tabulky). Tabulka parkovišť P+R má
+(`@targetClass` = `prk:ParkingTable`, identifikátor a verze tabulky). Tabulka parkovišť P+R má
 identifikátor `CzechParkAndRideTable`.
 
 .Odkaz na tabulku parkovišť (vzorek `pr-status.xml`)
@@ -62,7 +64,7 @@ include::{samplesdir}/pr-status.xml[tag=table-ref,indent=0]
 
 Stav každého parkoviště je jeden element `parkingStatusInformation` typu `prk:PlaceStatus`:
 
-* `reference` – odkaz na parkoviště v tabulce (`@id`, `@version`, `targetClass` = `fac:FacilityObject`).
+* `reference` – odkaz na parkoviště v tabulce (`@id`, `@version`, `@targetClass` = `fac:FacilityObject`).
 * `lastUpdated` – čas poslední aktualizace stavu parkoviště (s časovou zónou).
 * `occupancy/occupancy` – obsazenost v procentech kapacity (0–100). Doplňkově lze uvést počet volných
   míst (`numberOfVacantSpaces`), počet vozidel (`numberOfVehicles`) a trend (`occupancyTrend`).
@@ -76,8 +78,10 @@ Stav každého parkoviště je jeden element `parkingStatusInformation` typu `pr
 |`full` |100 %
 |===
 
-* `openingStatus` a `parkingFault` – nepovinně stav otevření a porucha zařízení (např. nefunkční
-  sčítání), `statusDescription` volný popis stavu.
+* Nepovinně:
+** `openingStatus` – stav otevření,
+** `parkingFault` – porucha zařízení (např. nefunkční sčítání),
+** `statusDescription` – volný popis stavu.
 
 Obsazenost se uvádí přímo u parkoviště, protože parkoviště P+R slouží jednomu typu vozidel. Rozlišení
 podle typů vozidel (skupiny míst jako v profilu ITP) se zavede, až je bude správce rozlišovat.
