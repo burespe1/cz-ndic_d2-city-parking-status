@@ -2,9 +2,9 @@
 
 Vzorky jsou součástí balíčku specifikace `{schema-uri}.zip` (adresář `samples`).
 
-=== pr-status.xml – obsazenost parkoviště P+R
+=== pr-status.xml – obsazenost parkovišť
 
-Publikace obsahuje stav jednoho parkoviště P+R (`PR-2`, P+R Černý Most).
+Skutečný stav z dat NDIC (1. 10. 2026): obsazenost 11 parkovišť v Praze.
 
 [source,xml]
 ----
@@ -15,9 +15,11 @@ Obálka a hlavička::
 Kořen `d2:payload` typu `prk:ParkingStatusPublication` s atributy `@profileName` a `@profileVersion`,
 `publicationTime` a `publicationCreator`. `feedType` odkazuje na zdroj dat.
 
-Tabulka::
-`parkingTableReference` odkazuje na tabulku `CzechParkAndRideTable` verze 1.
+Tabulky::
+`parkingTableReference` odkazuje na tabulky `CzechParkAndRideTable` a `CzechCityParkingTable` verze 1.
 
 Stav::
-Parkoviště `PR-2` je obsazeno z 50 %, stav je tedy `spacesAvailable`; stav byl
-aktualizován 18.{nbsp}5.{nbsp}2016 v 18:48:51.
+* Každé parkoviště je odkazem na jeho GUID v tabulce.
+* Data uvádějí obsazenost v procentech a z ní odvozený stav; počet volných míst se zatím neuvádí.
+* Např. P+R Zličín (`b33ca7aa-…`) je obsazeno ze 100 %, stav je tedy `full`; stav byl aktualizován
+  1.{nbsp}10.{nbsp}2026 v 16:29:56.

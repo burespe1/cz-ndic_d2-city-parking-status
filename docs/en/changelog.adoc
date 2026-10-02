@@ -1,5 +1,18 @@
 == Documentation change history
 
+// Documentation revision (MAJOR.MINOR.REVISION). Format changes see CHANGELOG.adoc in the specification.
 === 1.0.0
 
-* first release of the documentation
+* New documentation of the `cz-ndic_d2-city-parking-status` format version 1.0 (DATEX II 3.7). The format is new;
+  it replaces the information on P+R car parks carried so far by the situation publication (`CarParks` in the
+  cz-ndic_d2-parking-occupancy-v1.0 format, DATEX II 2.3).
+* Changes compared to the previous format:
+** The format is converted to the DATEX II 3.7 model. The `d2LogicalModel` and `exchange` envelopes
+   are not used; the root is `d2:payload`, the format is identified by the `@profileName` and `@profileVersion` attributes.
+** The car park is identified by the GUID under which NDIC publishes the car park; previous identifiers
+   (e.g. `PR-2`) are not used.
+** The publication references several car park tables by type (`CzechParkAndRideTable`,
+   `CzechCityParkingTable`).
+** The profile is narrowed for city car parks: the overcrowding values (`overcrowding`, `overcrowdingLevel1`,
+   `overcrowdingLevel2`, `noOvercrowding`) are not used.
+* The sample `pr-status.xml` is converted from NDIC production data (1 Oct 2026).

@@ -16,4 +16,22 @@
 # _enum:                # překlady hodnot výčtů pro celý formát (přepisují sdílený slovník kitu)
 #   ProbabilityEnum.certain: jistá
 # _unused_types: [LinearLocation]   # třídy, které schéma připouští, ale formát nepoužívá (ve výčtech variant se neuvádějí)
-{}
+
+FacilityObjectStatus:
+  reference:
+    ndic: GUID parkoviště v tabulce parkovišť (`cz-ndic_d2-city-parking-table`); `@version` = verze parkoviště.
+  lastUpdated:
+    ndic: Čas poslední změny stavu parkoviště.
+PlaceStatus:
+  status:
+    card: 0..1
+    ndic: 'Odvozen z obsazenosti: do 80 % `spacesAvailable`, 80–100 % `almostFull`, 100 % `full`.'
+Occupancy:
+  occupancy:
+    ndic: Obsazenost v procentech kapacity, celé číslo 0–100.
+  numberOfVacantSpaces:
+    ndic: Uvádí se jen přesný počet volných míst; údaj „méně než N“ se neuvádí.
+ParkingStatusPublication:
+  parkingTableReference:
+    card: 1..n
+    ndic: Odkaz na každou tabulku parkovišť, jejíž parkoviště publikace obsahuje.

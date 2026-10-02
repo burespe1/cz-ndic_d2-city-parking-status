@@ -47,13 +47,16 @@ include::{samplesdir}/pr-status.xml[tag=header,indent=2]
 ----
 
 [[tabulka]]
-=== Odkaz na tabulku parkovišť
+=== Odkaz na tabulky parkovišť
 
-Publikace odkazuje elementem `parkingTableReference` na tabulku parkovišť ve statickém formátu
-(`@targetClass` = `prk:ParkingTable`, identifikátor a verze tabulky). Tabulka parkovišť P+R má
-identifikátor `CzechParkAndRideTable`.
+Publikace odkazuje elementy `parkingTableReference` na tabulky parkovišť ve statickém formátu
+`cz-ndic_d2-city-parking-table` (`@targetClass` = `prk:ParkingTable`, identifikátor a verze tabulky) –
+na každou tabulku, jejíž parkoviště publikace obsahuje:
 
-.Odkaz na tabulku parkovišť (vzorek `pr-status.xml`)
+* `CzechParkAndRideTable` – parkoviště P+R,
+* `CzechCityParkingTable` – ostatní městská parkoviště.
+
+.Odkazy na tabulky parkovišť (vzorek `pr-status.xml`)
 [source,xml]
 ----
 include::{samplesdir}/pr-status.xml[tag=table-ref,indent=0]
@@ -64,7 +67,8 @@ include::{samplesdir}/pr-status.xml[tag=table-ref,indent=0]
 
 Stav každého parkoviště je jeden element `parkingStatusInformation` typu `prk:PlaceStatus`:
 
-* `reference` – odkaz na parkoviště v tabulce (`@id`, `@version`, `@targetClass` = `fac:FacilityObject`).
+* `reference` – odkaz na parkoviště v tabulce (`@id` – GUID parkoviště, `@version`, `@targetClass` =
+  `fac:FacilityObject`).
 * `lastUpdated` – čas poslední aktualizace stavu parkoviště (s časovou zónou).
 * `occupancy/occupancy` – obsazenost v procentech kapacity (0–100). Doplňkově lze uvést počet volných
   míst (`numberOfVacantSpaces`), počet vozidel (`numberOfVehicles`) a trend (`occupancyTrend`).
@@ -83,10 +87,12 @@ Stav každého parkoviště je jeden element `parkingStatusInformation` typu `pr
 ** `parkingFault` – porucha zařízení (např. nefunkční sčítání),
 ** `statusDescription` – volný popis stavu.
 
+Hodnoty přeplnění z profilu ITP (`overcrowding` a další) se u městských parkovišť nepoužívají.
+
 Obsazenost se uvádí přímo u parkoviště, protože parkoviště P+R slouží jednomu typu vozidel. Rozlišení
 podle typů vozidel (skupiny míst jako v profilu ITP) se zavede, až je bude správce rozlišovat.
 
-.Stav parkoviště P+R (vzorek `pr-status.xml`)
+.Stav parkoviště P+R Zličín (vzorek `pr-status.xml`)
 [source,xml]
 ----
 include::{samplesdir}/pr-status.xml[tag=place-status,indent=0]

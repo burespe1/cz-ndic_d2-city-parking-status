@@ -1,4 +1,25 @@
-== Examples
+== Examples of messages
 
-// Sample excerpts via tags – in the sample: <!-- tag::location[] --> … <!-- end::location[] -->
-Samples are part of the specification package `{schema-uri}.zip`.
+The samples are part of the specification package `{schema-uri}.zip` (folder `samples`).
+
+=== pr-status.xml – car park occupancy
+
+A real state from NDIC data (1 Oct 2026): occupancy of 11 car parks in Prague.
+
+[source,xml]
+----
+include::{samplesdir}/pr-status.xml[tags=**]
+----
+
+Envelope and header::
+Root `d2:payload` of the type `prk:ParkingStatusPublication` with the attributes `@profileName` and `@profileVersion`,
+`publicationTime` and `publicationCreator`. `feedType` refers to the data source.
+
+Tables::
+`parkingTableReference` references the tables `CzechParkAndRideTable` and `CzechCityParkingTable` version 1.
+
+Status::
+* Each car park is a reference to its GUID in the table.
+* The data give the occupancy as a percentage and the status derived from it; the number of vacant spaces is not given yet.
+* E.g. P+R Zličín (`b33ca7aa-…`) is 100 % occupied, so the status is `full`; the status was updated
+  on 1{nbsp}Oct{nbsp}2026 at 16:29:56.

@@ -1,4 +1,112 @@
 == Concepts
 
-Description of the format concepts: content of the publication, static vs. dynamic part,
-location referencing, record versioning. References: <<EN16157-3>>.
+The format provides the current occupancy of city car parks and park-and-ride (P+R) car parks. The description of the car parks (name,
+location, capacity, operator) is contained in the separate static format `cz-ndic_d2-city-parking-table`;
+this format carries only the variable data and references the car park table.
+
+The format is based on the DATEX II publication
+`prk:ParkingStatusPublication` <<TS16157-6>> and is a *light subset* of the profile for truck
+parking (ITP): it uses only the lowest level of the car park hierarchy – one car park (`prk:Place`) as a whole.
+
+[[obalka]]
+=== Envelope and publication header
+
+Each message is a DATEX II 3 document with the root element `d2:payload`. The `xsi:type` attribute of the root element
+specifies the publication type (here `prk:ParkingStatusPublication`), the `modelBaseVersion="3"` attribute
+the model version and the `@lang` attribute the default language of texts.
+
+The format the message conforms to is identified solely by attributes of the root element:
+
+[horizontal]
+`@profileName`:: format identifier without version (`cz-ndic_d2-city-parking-status`),
+`@profileVersion`:: format version (`1.0`).
+
+The publication header contains:
+
+* `feedType` – identifier of the data source (distribution) in the register of the national access point <<nap>>:
+** the source refers to the format in which it provides data; the format of the message is identified by the
+   `@profileName` and `@profileVersion` attributes,
+** the `feedDescription` element is not used.
+* `publicationTime` – time the publication content was created; if the content has not changed since the
+  previous publication, the original time is kept; a new time is set only when the content changes.
+* `publicationCreator` – publication provider:
+** country code in lower case (`cz`),
+** provider abbreviation (`nationalIdentifier`).
+* `headerInformation` – handling of the information; NDIC always sets:
+** `confidentiality` = `noRestriction`,
+** `informationStatus` = `real`.
+
+All times in the message include the time zone.
+
+.Root element and publication header (sample `pr-status.xml`)
+[source,xml]
+----
+include::{samplesdir}/pr-status.xml[lines=2]
+include::{samplesdir}/pr-status.xml[tag=header,indent=2]
+  ...
+----
+
+[[tabulka]]
+=== Reference to car park tables
+
+The publication references, by `parkingTableReference` elements, the car park tables in the static format
+`cz-ndic_d2-city-parking-table` (`@targetClass` = `prk:ParkingTable`, identifier and version of the table) –
+each table whose car parks the publication contains:
+
+* `CzechParkAndRideTable` – P+R car parks,
+* `CzechCityParkingTable` – other city car parks.
+
+.References to car park tables (sample `pr-status.xml`)
+[source,xml]
+----
+include::{samplesdir}/pr-status.xml[tag=table-ref,indent=0]
+----
+
+[[stav]]
+=== Car park status
+
+The status of each car park is one element `parkingStatusInformation` of the type `prk:PlaceStatus`:
+
+* `reference` – reference to the car park in the table (`@id` – GUID of the car park, `@version`, `@targetClass` =
+  `fac:FacilityObject`).
+* `lastUpdated` – time of the last update of the car park status (with time zone).
+* `occupancy/occupancy` – occupancy as a percentage of the capacity (0–100). In addition, the number of vacant
+  spaces (`numberOfVacantSpaces`), the number of vehicles (`numberOfVehicles`) and the trend (`occupancyTrend`) may be given.
+* `status` – overall status of the car park derived from the occupancy by the thresholds of the ITP profile:
+
+[cols="1,2",options="header"]
+|===
+|Value of `status` |Occupancy
+|`spacesAvailable` |below 80 %
+|`almostFull` |80–100 %
+|`full` |100 %
+|===
+
+* Optional:
+** `openingStatus` – opening status,
+** `parkingFault` – equipment fault (e.g. counting out of order),
+** `statusDescription` – free description of the status.
+
+The overcrowding values of the ITP profile (`overcrowding` and others) are not used for city car parks.
+
+The occupancy is given directly for the car park, because a P+R car park serves one type of vehicles. A distinction
+by vehicle type (groups of spaces as in the ITP profile) will be introduced once the operator distinguishes them.
+
+.Status of the P+R Zličín car park (sample `pr-status.xml`)
+[source,xml]
+----
+include::{samplesdir}/pr-status.xml[tag=place-status,indent=0]
+----
+
+[[platnost]]
+=== Time validity
+
+The car park status is valid until the next publication; the age of the data is the difference between `publicationTime`
+and `lastUpdated` of the given car park. If the content has not changed, the original
+`publicationTime` is kept.
+
+[[polohy]]
+== Location referencing
+
+The format does not give a location; it identifies the car park by a reference to the car park table, where its location
+is described (see the format `cz-ndic_d2-city-parking-table`).

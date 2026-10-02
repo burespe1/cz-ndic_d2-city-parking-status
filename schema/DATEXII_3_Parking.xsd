@@ -199,26 +199,6 @@
           <xs:documentation>The parking site is almost full (as defined by its configuration parameters).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="overcrowding">
-        <xs:annotation>
-          <xs:documentation>The parking site is overcrowding (as defined by its configuration parameters).</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="overcrowdingLevel1">
-        <xs:annotation>
-          <xs:documentation>The parking site is overcrowding in level 1 (as defined by its configuration parameters).</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="overcrowdingLevel2">
-        <xs:annotation>
-          <xs:documentation>The parking site is overcrowding in level 2 (as defined by its configuration parameters).</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="noOvercrowding">
-        <xs:annotation>
-          <xs:documentation>The parking site is not overcrowded.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
       <xs:enumeration value="unknown">
         <xs:annotation>
           <xs:documentation>The status of the parking site is unknown.</xs:documentation>

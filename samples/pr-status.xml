@@ -2,27 +2,108 @@
 <d2:payload xmlns:d2="http://datex2.eu/schema/3/d2Payload" xmlns:com="http://datex2.eu/schema/3/common" xmlns:prk="http://datex2.eu/schema/3/parking" xmlns:fac="http://datex2.eu/schema/3/facilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="prk:ParkingStatusPublication" lang="cs" modelBaseVersion="3" profileName="cz-ndic_d2-city-parking-status" profileVersion="1.0">
   <!-- tag::header[] -->
   <com:feedType>x-source:cz-ndic_d2-city-parking-status-v1</com:feedType>
-  <com:publicationTime>2016-05-18T18:49:21+02:00</com:publicationTime>
+  <com:publicationTime>2026-10-01T16:30:41+02:00</com:publicationTime>
   <com:publicationCreator>
     <com:country>cz</com:country>
-    <com:nationalIdentifier>DRU</com:nationalIdentifier>
+    <com:nationalIdentifier>NDIC</com:nationalIdentifier>
   </com:publicationCreator>
   <!-- end::header[] -->
   <!-- tag::table-ref[] -->
   <prk:parkingTableReference id="CzechParkAndRideTable" version="1" targetClass="prk:ParkingTable"/>
+  <prk:parkingTableReference id="CzechCityParkingTable" version="1" targetClass="prk:ParkingTable"/>
   <!-- end::table-ref[] -->
   <prk:headerInformation>
     <com:confidentiality>noRestriction</com:confidentiality>
     <com:informationStatus>real</com:informationStatus>
   </prk:headerInformation>
-  <!-- tag::place-status[] -->
   <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
-    <fac:reference id="PR-2" version="1" targetClass="fac:FacilityObject"/>
-    <fac:lastUpdated>2016-05-18T18:48:51+02:00</fac:lastUpdated>
+    <fac:reference id="cefe4b6b-43de-45ff-9d7d-38c99425be2c" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:45+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>60</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="4516d5e2-509c-4fc5-a0bc-5add2d032251" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:47+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>20</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="0ec84a2c-9447-4e25-837e-4c301f4f1ea6" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:49+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>70</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="cf4f6614-a0b5-411d-ac12-749c3116c18a" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:49+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>70</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="ba41f7c3-a27b-4683-839b-c59d512d3163" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:51+02:00</fac:lastUpdated>
     <prk:occupancy>
       <prk:occupancy>50</prk:occupancy>
     </prk:occupancy>
     <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="f27f2b54-5d11-483e-83fe-8fa4627db3c5" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:51+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>70</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="88860fda-5479-4126-ae4a-52c5d3ba0582" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:53+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>70</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="447af342-3e86-43f1-94de-0700e5fe56a7" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:53+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>30</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="ad198910-2329-47bf-88e3-57e3414690e6" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:54+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>50</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>spacesAvailable</prk:status>
+  </prk:parkingStatusInformation>
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="58bc47a0-1a93-4177-9011-6a7d7dbc7f0a" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:56+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>80</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>almostFull</prk:status>
+  </prk:parkingStatusInformation>
+  <!-- tag::place-status[] -->
+  <prk:parkingStatusInformation xsi:type="prk:PlaceStatus">
+    <fac:reference id="b33ca7aa-7b4e-4444-aac6-61fa79178b6a" version="1" targetClass="fac:FacilityObject"/>
+    <fac:lastUpdated>2026-10-01T16:29:56+02:00</fac:lastUpdated>
+    <prk:occupancy>
+      <prk:occupancy>100</prk:occupancy>
+    </prk:occupancy>
+    <prk:status>full</prk:status>
   </prk:parkingStatusInformation>
   <!-- end::place-status[] -->
 </d2:payload>
