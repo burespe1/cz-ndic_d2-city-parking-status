@@ -25,7 +25,7 @@ FacilityObjectStatus:
 PlaceStatus:
   status:
     card: 0..1
-    ndic: 'Odvozen z obsazenosti: do 80 % `spacesAvailable`, 80–100 % `almostFull`, 100 % `full`.'
+    ndic: 'Odvozen z obsazenosti: méně než 80 % `spacesAvailable`, 80 % a více a méně než 100 % `almostFull`, 100 % `full`.'
 Occupancy:
   occupancy:
     ndic: Obsazenost v procentech kapacity, celé číslo 0–100.

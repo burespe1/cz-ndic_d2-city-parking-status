@@ -77,8 +77,8 @@ Stav každého parkoviště je jeden element `parkingStatusInformation` typu `pr
 [cols="1,2",options="header"]
 |===
 |Hodnota `status` |Obsazenost
-|`spacesAvailable` |do 80 %
-|`almostFull` |80–100 %
+|`spacesAvailable` |méně než 80 %
+|`almostFull` |80 % a více, méně než 100 %
 |`full` |100 %
 |===
 

@@ -77,8 +77,8 @@ The status of each car park is one element `parkingStatusInformation` of the typ
 [cols="1,2",options="header"]
 |===
 |Value of `status` |Occupancy
-|`spacesAvailable` |below 80 %
-|`almostFull` |80–100 %
+|`spacesAvailable` |less than 80 %
+|`almostFull` |80 % or more, less than 100 %
 |`full` |100 %
 |===
 
