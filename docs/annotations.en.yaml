@@ -25,7 +25,7 @@ FacilityObjectStatus:
 PlaceStatus:
   status:
     card: 0..1
-    ndic: 'Derived from the occupancy: below 80 % `spacesAvailable`, 80–100 % `almostFull`, 100 % `full`.'
+    ndic: 'Derived from the occupancy: less than 80 % `spacesAvailable`, 80 % or more and less than 100 % `almostFull`, 100 % `full`.'
 Occupancy:
   occupancy:
     ndic: Occupancy as a percentage of the capacity, integer 0–100.

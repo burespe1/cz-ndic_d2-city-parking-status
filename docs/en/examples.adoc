@@ -1,4 +1,4 @@
-== Examples of messages
+== Message examples
 
 The samples are part of the specification package `{schema-uri}.zip` (folder `samples`).
 
@@ -13,7 +13,7 @@ include::{samplesdir}/pr-status.xml[tags=**]
 
 Envelope and header::
 Root `d2:payload` of the type `prk:ParkingStatusPublication` with the attributes `@profileName` and `@profileVersion`,
-`publicationTime` and `publicationCreator`. `feedType` refers to the data source.
+`publicationTime` and `publicationCreator`. `feedType` refers to the distribution (data source).
 
 Tables::
 `parkingTableReference` references the tables `CzechParkAndRideTable` and `CzechCityParkingTable` version 1.

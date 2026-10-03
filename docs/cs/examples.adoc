@@ -13,7 +13,7 @@ include::{samplesdir}/pr-status.xml[tags=**]
 
 Obálka a hlavička::
 Kořen `d2:payload` typu `prk:ParkingStatusPublication` s atributy `@profileName` a `@profileVersion`,
-`publicationTime` a `publicationCreator`. `feedType` odkazuje na zdroj dat.
+`publicationTime` a `publicationCreator`. `feedType` odkazuje na distribuci (zdroj dat).
 
 Tabulky::
 `parkingTableReference` odkazuje na tabulky `CzechParkAndRideTable` a `CzechCityParkingTable` verze 1.
