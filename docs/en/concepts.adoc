@@ -101,7 +101,7 @@ include::{samplesdir}/pr-status.xml[tag=place-status,indent=0]
 [[platnost]]
 === Time validity
 
-The car park status is valid until the next publication; the age of the data is the difference between `publicationTime`
+The car park status is valid until the next publication; the age of the data is the difference between the current time
 and `lastUpdated` of the given car park. If the content has not changed, the original
 `publicationTime` is kept.
 

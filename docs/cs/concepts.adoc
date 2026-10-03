@@ -101,7 +101,7 @@ include::{samplesdir}/pr-status.xml[tag=place-status,indent=0]
 [[platnost]]
 === Časová platnost
 
-Stav parkoviště platí do další publikace; stáří údaje je rozdíl `publicationTime` a `lastUpdated`
+Stav parkoviště platí do další publikace; stáří údaje je rozdíl aktuálního času a `lastUpdated`
 daného parkoviště. Nezměnil-li se obsah, zůstává
 `publicationTime` původní.
 
