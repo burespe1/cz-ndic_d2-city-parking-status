@@ -89,8 +89,8 @@ Stav každého parkoviště je jeden element `parkingStatusInformation` typu `pr
 
 Hodnoty přeplnění z profilu ITP (`overcrowding` a další) se u městských parkovišť nepoužívají.
 
-Obsazenost se uvádí přímo u parkoviště, protože parkoviště P+R slouží jednomu typu vozidel. Rozlišení
-podle typů vozidel (skupiny míst jako v profilu ITP) se zavede, až je bude správce rozlišovat.
+Obsazenost se uvádí přímo u parkoviště, protože parkoviště P+R slouží jednomu typu vozidel. Skupiny
+míst podle typů vozidel (jako v profilu ITP) se nepoužívají.
 
 .Stav parkoviště P+R Zličín (vzorek `pr-status.xml`)
 [source,xml]

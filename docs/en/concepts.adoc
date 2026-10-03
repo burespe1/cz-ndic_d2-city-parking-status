@@ -89,8 +89,8 @@ The status of each car park is one element `parkingStatusInformation` of the typ
 
 The overcrowding values of the ITP profile (`overcrowding` and others) are not used for city car parks.
 
-The occupancy is given directly for the car park, because a P+R car park serves one type of vehicles. A distinction
-by vehicle type (groups of spaces as in the ITP profile) will be introduced once the operator distinguishes them.
+The occupancy is given directly for the car park, because a P+R car park serves one type of vehicles. Groups of
+spaces by vehicle type (as in the ITP profile) are not used.
 
 .Status of the P+R Zličín car park (sample `pr-status.xml`)
 [source,xml]
