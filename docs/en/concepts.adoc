@@ -6,7 +6,7 @@ this format carries only the variable data and references the car park table.
 
 The format is based on the DATEX II publication
 `prk:ParkingStatusPublication` <<TS16157-6>> and is a *light subset* of the profile for truck
-parking (ITP): it uses only the lowest level of the car park hierarchy – one car park (`prk:Place`) as a whole.
+parking (ITP): it uses only the top (root) level of the car park hierarchy (`layer` = 0) – one car park (`prk:Place`) as a whole.
 
 [[obalka]]
 === Envelope and publication header

@@ -6,7 +6,7 @@ tento formát nese jen proměnné údaje a na tabulku parkovišť odkazuje.
 
 Formát vychází z DATEX II publikace
 `prk:ParkingStatusPublication` <<TS16157-6>> a je *lehkou podmnožinou* profilu pro parkoviště nákladních
-vozidel (ITP): používá jen nejnižší úroveň hierarchie parkoviště – jedno parkoviště (`prk:Place`) jako celek.
+vozidel (ITP): používá jen nejvyšší (kořenovou) úroveň hierarchie parkoviště (`layer` = 0) – jedno parkoviště (`prk:Place`) jako celek.
 
 [[obalka]]
 === Obálka a hlavička publikace
