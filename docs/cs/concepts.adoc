@@ -27,8 +27,9 @@ Hlavička publikace obsahuje:
 ** zdroj odkazuje na formát, ve kterém data poskytuje; formát zprávy určují atributy `@profileName` a
    `@profileVersion`,
 ** element `feedDescription` se nepoužívá.
-* `publicationTime` – čas vytvoření obsahu publikace; pokud se obsah od předchozí publikace nezměnil, zůstává
-  čas původní; nový čas vzniká jen se změnou obsahu.
+* `publicationTime` – čas vygenerování publikace; publikace se vydává periodicky a každé vygenerování (v každé
+  periodě) má nový čas, i když se hodnoty nezměnily. Je-li soubor vystaven mimo periodu aktualizace (sestaven
+  z předchozích hodnot beze změny obsahu), `publicationTime` se nemění; mění se jen čas vystavení souboru.
 * `publicationCreator` – poskytovatel publikace:
 ** kód země malými písmeny (`cz`),
 ** zkratka poskytovatele (`nationalIdentifier`).
@@ -102,8 +103,7 @@ include::{samplesdir}/pr-status.xml[tag=place-status,indent=0]
 === Časová platnost
 
 Stav parkoviště platí do další publikace; stáří údaje je rozdíl aktuálního času a `lastUpdated`
-daného parkoviště. Nezměnil-li se obsah, zůstává
-`publicationTime` původní.
+daného parkoviště. `publicationTime` se mění s každým vygenerováním publikace.
 
 [[polohy]]
 == Popisování poloh
